@@ -1,6 +1,5 @@
 import Navbar from "./components/Navbar";
 import Introduction from "./components/Introduction";
-import Carrier from "./components/Carier";
 import Skills from "./components/Skills";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";

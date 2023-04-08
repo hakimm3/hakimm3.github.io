@@ -40,60 +40,6 @@ export default function Navbar() {
                 Contact
               </a>
             </li>
-            <li className="nav-item dropdown">
-              <button
-                className="btn nav-link dropdown-toggle"
-                type="button"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-              >
-                <i
-                  className="bi bi-moon-stars theme-icon-active"
-                  data-theme-icon-active="bi-moon-stars"
-                ></i>
-              </button>
-              <ul className="dropdown-menu dropdown-menu-end">
-                <li>
-                  <button
-                    className="dropdown-item d-flex align-items-center"
-                    type="button"
-                    data-bs-theme-value="dark "
-                  >
-                    <i
-                      className="bi bi-moon-stars me-2 opacity-50"
-                      data-theme-icon="bi-moon-stars"
-                    ></i>
-                    Dark
-                  </button>
-                </li>
-                <li>
-                <button
-                    className="dropdown-item d-flex align-items-center"
-                    type="button"
-                    data-bs-theme-value="light "
-                  >
-                    <i
-                      className="bi bi-sun me-2 opacity-50"
-                      data-theme-icon="bi-sun"
-                    ></i>
-                    Light
-                  </button>
-                </li>
-                <li>
-                <button
-                    className="dropdown-item d-flex align-items-center"
-                    type="button"
-                    data-bs-theme-value="auto"
-                  >
-                    <i
-                      className="bi bi-circle-half me-2 opacity-50"
-                      data-theme-icon="bi-circle-half"
-                    ></i>
-                    Auto
-                  </button>
-                </li>
-              </ul>
-            </li>
           </ul>
         </div>
       </div>
