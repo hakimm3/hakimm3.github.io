@@ -8,7 +8,6 @@ import Experience from "./components/Experience";
 
 function App() {
   return (
-    <div>
       <div className="container">
         <div className="row justify-content-center">
           <div className="col-md-8">
@@ -22,7 +21,6 @@ function App() {
           </div>
         </div>
       </div>
-    </div>
   );
 }
 
