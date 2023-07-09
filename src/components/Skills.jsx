@@ -1,3 +1,5 @@
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
 import React from "react";
 
 export default function Skills() {
@@ -10,8 +12,9 @@ export default function Skills() {
       <p className="btn btn-secondary mx-2">Bootstrap</p>
       <p className="btn btn-secondary mx-2">Laravel</p>
       <p className="btn btn-secondary mx-2">React</p>
-      <p className="btn btn-secondary">Git</p>
-      <p className="btn btn-secondary mx-2">JSON</p>
+      <p className="btn btn-secondary"> Git</p>
+      <p className="btn btn-secondary mx-2">JSON
+      </p>
       <p className="btn btn-secondary mx-2">Linux</p>
     </section>
   );
