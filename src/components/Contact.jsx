@@ -12,7 +12,6 @@ export default function Contact() {
   function handleSubmit(event) {
     event.preventDefault();
     const MySwal = withReactContent(Swal);
-    // loading sweetalert
     MySwal.fire({
       title: "Sending message...",
       didOpen: () => {
@@ -29,7 +28,6 @@ export default function Contact() {
     };
     emailjs.send("service_vq86u42", "template_mspe0pv", templateParams).then(
       function (response) {
-        console.log("SUCCESS!", response.status, response.text);
         MySwal.fire({
           icon: "success",
           title: "Message sent successfully!",
