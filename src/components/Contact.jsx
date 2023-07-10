@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
+// import 'dotenv/config'
+
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -26,7 +28,7 @@ export default function Contact() {
       to_name: "Trisa Abdul Hakim",
       message: formData.message,
     };
-    emailjs.send("service_vq86u42", "template_mspe0pv", templateParams).then(
+    emailjs.send(process.env.SERVICE_ID, process.env.TEMPLATE_ID, templateParams).then(
       function (response) {
         MySwal.fire({
           icon: "success",
@@ -44,6 +46,12 @@ export default function Contact() {
       },
       function (error) {
         console.log("FAILED...", error);
+        MySwal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: "Something went wrong!",
+          footer: "Please try again later",
+        });
       }
     );
   }
