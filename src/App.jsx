@@ -10,15 +10,15 @@ function App() {
   return (
     <div className="container">
       <div className="row justify-content-center">
-        <div className="col-md-8">
+        <main className="col-md-8 bg-dark">
           <Navbar />
           <Introduction />
-          <Experience data={ExperienceData}/>
+          <Experience data={ExperienceData} />
           {/* <Carrier /> */}
           <Skills />
           <Contact />
           <Footer />
-        </div>
+        </main>
       </div>
     </div>
   );

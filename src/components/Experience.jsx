@@ -3,10 +3,10 @@ import React from "react";
 export default function Experience(props) {
   const data = props.data.map((item) => {
     return (
-      <div className="col-lg-6 my-2" key={item.title}>
-        <div className="card">
+      <section className="col-lg-6 my-2" key={item.title}>
+        <div className="card" id="card-experience">
           <div className="card-body">
-            <h3 className="card-title"> {item.title} </h3>
+           <a target="_blank" href={item.link} className="text-decoration-none text-white"><h3 className="card-title"> {item.title} </h3></a>
             <h6 className="card-subtitle mb-2 text-muted">
              {item.place}
             </h6>
@@ -15,7 +15,7 @@ export default function Experience(props) {
             </p>
           </div>
         </div>
-      </div>
+      </section>
     );
   });
 

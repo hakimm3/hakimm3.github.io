@@ -5,16 +5,16 @@ export default function Footer() {
     <footer className="bg-dark text-white my-2 p-4 text-center" id="footer">
       <div className="row">
         <div className="col-md-12">
-          <a href="https://www.linkedin.com/in/trisa-abdul-hakim/" className="btn btn-sm btn-outline-light mx-1 my-1">
+          <a target="_blank" href="https://www.linkedin.com/in/trisa-abdul-hakim/" className="btn btn-sm btn-outline-light mx-1 my-1">
             Linkedin
           </a>
-          <a href="https://github.com/hakimm3" className="btn btn-sm btn-outline-light mx-1 my-1">
+          <a target="_blank" href="https://github.com/hakimm3" className="btn btn-sm btn-outline-light mx-1 my-1">
             Github
           </a>
-          <a href="https://gitlab.com/hakimpbg" className="btn btn-sm btn-outline-light mx-1 my-1">
+          <a target="_blank" href="https://gitlab.com/hakimpbg" className="btn btn-sm btn-outline-light mx-1 my-1">
             Gitlab
           </a>
-          <a href="mailto:trisaabdul@gmail.com" className="btn btn-sm btn-outline-light mx-1 my-1">
+          <a target="_blank" href="mailto:trisaabdul@gmail.com" className="btn btn-sm btn-outline-light mx-1 my-1">
             Email
           </a>
         </div>

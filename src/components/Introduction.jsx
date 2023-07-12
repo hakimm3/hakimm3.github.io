@@ -9,6 +9,7 @@ export default function Introduction() {
           src={my_photo}
           alt="My Photo"
           className="img-thumbnail p-0"
+          id="my-photo"
         />
       </div>
       <div className="col-md-8 mt-2">
