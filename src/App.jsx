@@ -5,7 +5,8 @@ import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 import Experience from "./components/Experience";
 import ExperienceData from "./data/Experience";
-
+import './assets/style.css';
+import './assets/module/particle';
 function App() {
   return (
     <div className="container">
