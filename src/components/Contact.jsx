@@ -45,7 +45,6 @@ export default function Contact() {
         });
       },
       function (error) {
-        console.log("FAILED...", error);
         MySwal.fire({
           icon: "error",
           title: "Oops...",

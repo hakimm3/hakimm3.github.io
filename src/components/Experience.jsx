@@ -5,7 +5,7 @@ export default function Experience(props) {
     return (
       <section className="col-lg-6 my-2" key={item.title}>
         <div className="card" id="card-experience">
-          <div className="card-body">
+          <div className="card-body h-100">
            <a target="_blank" href={item.link} className="text-decoration-none text-white"><h3 className="card-title"> {item.title} </h3></a>
             <h6 className="card-subtitle mb-2 text-muted">
              {item.place}

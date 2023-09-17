@@ -5,8 +5,11 @@ import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 import Experience from "./components/Experience";
 import ExperienceData from "./data/Experience";
-import './assets/style.css';
-import './assets/module/particle';
+import Education from "./components/Education";
+import EducationData from "./data/Education";
+
+import "./assets/style.css" 
+
 function App() {
   return (
     <div className="container">
@@ -15,7 +18,7 @@ function App() {
           <Navbar />
           <Introduction />
           <Experience data={ExperienceData} />
-          {/* <Carrier /> */}
+          <Education data={EducationData}/>
           <Skills />
           <Contact />
           <Footer />
