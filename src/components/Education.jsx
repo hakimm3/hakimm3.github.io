@@ -3,7 +3,7 @@ import React from "react";
 export default function Education(props) {
   const data = props.data.map((item) => {
     return (
-      <section className="col-lg-6 my-2">
+      <section className="col-lg-6 my-2" key={item.title}>
         <div className="card" id="card-experience">
           <div className="card-body">
             <a

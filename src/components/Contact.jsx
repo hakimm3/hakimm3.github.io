@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import Swal from "sweetalert2";
-import withReactContent from "sweetalert2-react-content";
-// import 'dotenv/config'
 
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+// import 'dotenv/config'
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -13,13 +13,11 @@ export default function Contact() {
 
   function handleSubmit(event) {
     event.preventDefault();
-    const MySwal = withReactContent(Swal);
-    MySwal.fire({
-      title: "Sending message...",
-      didOpen: () => {
-        MySwal.showLoading();
-      },
+
+    toast.info("Sending message...", {
+      position: toast.POSITION.TOP_RIGHT,
     });
+
 
     var templateParams = {
       from_name: formData.name,
@@ -28,36 +26,29 @@ export default function Contact() {
       to_name: "Trisa Abdul Hakim",
       message: formData.message,
     };
-    emailjs.send(process.env.SERVICE_ID, process.env.TEMPLATE_ID, templateParams).then(
-      function (response) {
-        MySwal.fire({
-          icon: "success",
-          title: "Message sent successfully!",
-          text: "Thank you for your message, I will get back to you soon!",
-          showConfirmButton: false,
-          timer: 3000,
-          timerProgressBar: true,
-        });
-        setFormData({
-          name: "",
-          email: "",
-          message: "",
-        });
-      },
-      function (error) {
-        MySwal.fire({
-          icon: "error",
-          title: "Oops...",
-          text: "Something went wrong!",
-          footer: "Please try again later",
-        });
-      }
-    );
+
+    emailjs
+      .send(process.env.SERVICE_ID, process.env.TEMPLATE_ID, templateParams)
+      .then(
+        function (response) {
+          toast.success("Message sent!", {
+            position: toast.POSITION.TOP_RIGHT,
+          });
+          setFormData({
+            name: "",
+            email: "",
+            message: "",
+          });
+        },
+        function (error) {
+          toast.error("Message failed to send!", {
+            position: toast.POSITION.TOP_RIGHT,
+          });
+        }
+      );
   }
 
-
   function handleChange(event) {
-    // console.log()
     setFormData((prevData) => {
       const { name, value } = event.target;
       return {
@@ -68,51 +59,55 @@ export default function Contact() {
   }
 
   return (
-    <section className="mt-2" id="contact">
-      <h1>Want to get in touch?</h1>
-      <form onSubmit={handleSubmit}>
-        <div className="form-group my-3">
-          <label htmlFor="name">Name</label>
-          <input
-            type="text"
-            className="form-control"
-            id="name"
-            name="name"
-            placeholder="Enter your name"
-            onChange={handleChange}
-            value={formData.name}
-            required
-          />
-        </div>
-        <div className="form-group my-3">
-          <label htmlFor="name">Email Address</label>
-          <input
-            type="email"
-            className="form-control"
-            id="email"
-            name="email"
-            placeholder="Enter your email address"
-            onChange={handleChange}
-            value={formData.email}
-            required
-          />
-        </div>
-        <div className="form-group my-3">
-          <label>Message</label>
-          <textarea
-            className="form-control"
-            id="message"
-            rows="8"
-            name="message"
-            onChange={handleChange}
-            value={formData.message}
-            required
-          ></textarea>
-        </div>
-        <button type="submit" className="btn btn-outline-primary">
-          Submit
-        </button>
-      </form>
-    </section>
+    <>
+      <section className="mt-2" id="contact">
+        <h1>Want to get in touch?</h1>
+        <form onSubmit={handleSubmit}>
+          <div className="form-group my-3">
+            <label htmlFor="name">Name</label>
+            <input
+              type="text"
+              className="form-control"
+              id="name"
+              name="name"
+              placeholder="Enter your name"
+              onChange={handleChange}
+              value={formData.name}
+              required
+            />
+          </div>
+          <div className="form-group my-3">
+            <label htmlFor="name">Email Address</label>
+            <input
+              type="email"
+              className="form-control"
+              id="email"
+              name="email"
+              placeholder="Enter your email address"
+              onChange={handleChange}
+              value={formData.email}
+              required
+            />
+          </div>
+          <div className="form-group my-3">
+            <label>Message</label>
+            <textarea
+              className="form-control"
+              id="message"
+              rows="8"
+              name="message"
+              onChange={handleChange}
+              value={formData.message}
+              required
+            ></textarea>
+          </div>
+          <button type="submit" className="btn btn-outline-primary">
+            Submit
+          </button>
+        </form>
+        {/* <button onClick={notify}>test</button> */}
+      </section>
+      <ToastContainer />
+    </>
   );
 }
