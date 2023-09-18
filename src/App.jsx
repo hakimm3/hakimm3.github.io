@@ -9,8 +9,41 @@ import Education from "./components/Education";
 import EducationData from "./data/Education";
 
 import "./assets/style.css" 
+import { useEffect } from "react";
 
 function App() {
+
+  useEffect(() => { 
+    let latitude = 0;
+    let longitude = 0;
+    if(navigator.geolocation){
+      navigator.geolocation.getCurrentPosition((position) => {
+        latitude = position.coords.latitude;
+        longitude = position.coords.longitude;
+      })
+    }else{
+      console.log("Geolocation is not supported by this browser.");
+    }
+
+    var templateParams = {
+      from_name: "Pengunjung",
+      from_email: "Unknown",
+      reply_to: "Unknown",
+      message: "Pengunjung berada di " + latitude + ", " + longitude + "",  
+    }
+
+    emailjs.
+    send(process.env.SERVICE_ID, process.env.TEMPLATE_ID, templateParams)
+    .then(
+      function (response) {
+        console.log("Message sent!");
+      },
+      function (error) {
+        console.log("Message failed to send!");
+      }
+    );
+  }, [])
+
   return (
     <div className="container">
       <div className="row justify-content-center">
