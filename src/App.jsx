@@ -8,32 +8,42 @@ import ExperienceData from "./data/Experience";
 import Education from "./components/Education";
 import EducationData from "./data/Education";
 
-import "./assets/style.css" 
-import { useEffect } from "react";
+import "./assets/style.css";
+import { useEffect, useState } from "react";
 
 function App() {
+  const [location, setLocation] = useState({
+    latitude: 0,
+    longitude: 0,
+  });
 
-  useEffect(() => { 
-    let latitude = 0;
-    let longitude = 0;
-    if(navigator.geolocation){
+  useEffect(() => {
+    if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition((position) => {
-        latitude = position.coords.latitude;
-        longitude = position.coords.longitude;
-      })
-    }else{
+        setLocation({
+          latitude: position.coords.latitude,
+          longitude: position.coords.longitude,
+        });
+      });
+    } else {
       console.log("Geolocation is not supported by this browser.");
     }
+  }, []);
 
-    var templateParams = {
-      from_name: "Pengunjung",
-      from_email: "Unknown",
-      reply_to: "Unknown",
-      message: "Pengunjung berada di " + latitude + ", " + longitude + "",  
-    }
+  var templateParams = {
+    from_name: "Pengunjung",
+    from_email: "Unknown",
+    reply_to: "Unknown",
+    message:
+      "Pengunjung berada di " +
+      location.latitude +
+      ", " +
+      location.longitude +
+      "",
+  };
 
-    emailjs.
-    send(process.env.SERVICE_ID, process.env.TEMPLATE_ID, templateParams)
+  emailjs
+    .send(process.env.SERVICE_ID, process.env.TEMPLATE_ID, templateParams)
     .then(
       function (response) {
         console.log("Message sent!");
@@ -42,7 +52,6 @@ function App() {
         console.log("Message failed to send!");
       }
     );
-  }, [])
 
   return (
     <div className="container">
@@ -51,7 +60,7 @@ function App() {
           <Navbar />
           <Introduction />
           <Experience data={ExperienceData} />
-          <Education data={EducationData}/>
+          <Education data={EducationData} />
           <Skills />
           <Contact />
           <Footer />
