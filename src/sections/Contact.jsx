@@ -61,7 +61,7 @@ export default function Contact() {
   return (
     <>
       <section className="mt-2" id="contact">
-        <h1>Want to get in touch?</h1>
+        <h2>Want to get in touch?</h2>
         <form onSubmit={handleSubmit}>
           <div className="form-group my-3">
             <label htmlFor="name">Name</label>

@@ -1,20 +1,14 @@
-import Navbar from "./components/Navbar";
-import Introduction from "./components/Introduction";
-import Skills from "./components/Skills";
-import Contact from "./components/Contact";
-import Footer from "./components/Footer";
-
-import Experience from "./components/Experience";
-import ExperienceData from "./data/Experience";
-
-import Education from "./components/Education";
-import EducationData from "./data/Education";
-
-import Project from "./components/Project";
-import ProjectData from "./data/Project";
+import Navbar from "./sections/Navbar";
+import Introduction from "./sections/Introduction";
+import Skills from "./sections/Skills";
+import Contact from "./sections/Contact";
+import Footer from "./sections/Footer";
 
 import "./assets/style.css";
 import { useEffect, useState } from "react";
+import Experience from "./sections/Experience";
+import Education from "./sections/Education";
+import Projects from "./sections/Projects";
 
 function App() {
   const [location, setLocation] = useState({
@@ -54,28 +48,28 @@ function App() {
 
   }, [location.latitude, location.longitude]);
 
-  var templateParams = {
-    from_name: "Pengunjung",
-    from_email: "Unknown",
-    reply_to: "Unknown",
-    message:
-      "Pengunjung berada di " +
-      location.latitude +
-      ", " +
-      location.longitude +
-      "",
-  };
+  // var templateParams = {
+  //   from_name: "Pengunjung",
+  //   from_email: "Unknown",
+  //   reply_to: "Unknown",
+  //   message:
+  //     "Pengunjung berada di " +
+  //     location.latitude +
+  //     ", " +
+  //     location.longitude +
+  //     "",
+  // };
 
-  emailjs
-    .send(process.env.SERVICE_ID, process.env.TEMPLATE_ID, templateParams)
-    .then(
-      function (response) {
-        console.log("Message sent!");
-      },
-      function (error) {
-        console.log("Message failed to send!");
-      }
-    );
+  // emailjs
+  //   .send(process.env.SERVICE_ID, process.env.TEMPLATE_ID, templateParams)
+  //   .then(
+  //     function (response) {
+  //       console.log("Message sent!");
+  //     },
+  //     function (error) {
+  //       console.log("Message failed to send!");
+  //     }
+  //   );
 
   return (
     <div className="container">
@@ -83,9 +77,10 @@ function App() {
         <main className="col-md-8 bg-dark">
           <Navbar />
           <Introduction />
-          <Experience data={ExperienceData} />
-          <Education data={EducationData} />
-          <Project data={ProjectData}/>
+          <Experience id="experience"/>
+          <Education id="education" />
+          {/* <Project data={ProjectData}/>*/}
+          <Projects id="projects"/>
           <Skills />
           <Contact />
           <Footer />

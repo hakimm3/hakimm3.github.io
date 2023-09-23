@@ -5,7 +5,7 @@ import React from "react";
 export default function Skills() {
   return (
     <section className="col-md-6 my-2" id="skills">
-      <h1>Skills</h1>
+      <h2>Skills</h2>
       <p className="btn btn-secondary mx-2">HTML</p>
       <p className="btn btn-secondary mx-2">CSS</p>
       <p className="btn btn-secondary mx-2">Sql</p>
