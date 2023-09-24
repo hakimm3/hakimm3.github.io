@@ -16,7 +16,7 @@ export default function Projects({ id }) {
               sub_title={
                 <div>
                 <FontAwesomeIcon icon={faCalendar} /> {item.year} - 
-                {(item.isPrivate ? "Private" : "Public") }
+                {(item.isPrivate ? " Private " : " Public ") }
                 Project
                 </div>
               }

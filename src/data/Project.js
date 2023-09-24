@@ -1,23 +1,23 @@
 export default [
-    {
-        name: 'Maintenance System',
-        description: "This application is a software that is used to manage and track maintenance activities on physical assets." + 
-        "This application can help the company to manage the maintenance of assets in a more structured and organized way.",
-        technologies: ['Laravel', 'Bootstrap', 'JQuery', 'MySQL'],
-        year: '2023',
-        isPrivate: true,
-        repository: 'Private',
-        website: '#'
-    },
-    {
-        name: "Perisai DPR RI",
-        description: "The Perisai DPR RI System is a web-based information system used to manage and track the performance of functional positions in the Secretariat General of the People's Representative Council of the Republic of Indonesia (Setjen DPR RI). The system was built to support the implementation of the tasks and functions of the Setjen DPR RI in the development of functional positions",
-        technologies: ['Laravel', 'Bootstrap', 'JQuery', 'MySQL'],
-        year: '2022',
-        isPrivate: true,
-        repository: 'Private',
-        website: 'https://perisai.dpr.go.id',
-    },
+    // {
+    //     name: 'Maintenance System',
+    //     description: "This application is a software that is used to manage and track maintenance activities on physical assets." + 
+    //     "This application can help the company to manage the maintenance of assets in a more structured and organized way.",
+    //     technologies: ['Laravel', 'Bootstrap', 'JQuery', 'MySQL'],
+    //     year: '2023',
+    //     isPrivate: true,
+    //     repository: 'Private',
+    //     website: '#'
+    // },
+    // {
+    //     name: "Perisai DPR RI",
+    //     description: "The Perisai DPR RI System is a web-based information system used to manage and track the performance of functional positions in the Secretariat General of the People's Representative Council of the Republic of Indonesia (Setjen DPR RI). The system was built to support the implementation of the tasks and functions of the Setjen DPR RI in the development of functional positions",
+    //     technologies: ['Laravel', 'Bootstrap', 'JQuery', 'MySQL'],
+    //     year: '2022',
+    //     isPrivate: true,
+    //     repository: 'Private',
+    //     website: 'https://perisai.dpr.go.id',
+    // },
     {
         name: "My Money",
         description: "My Money is a web-based application that is used to manage personal finances. This application use to note the income and expenses of the user. This application also provides a report feature that can be used to see the user's financial condition.",
