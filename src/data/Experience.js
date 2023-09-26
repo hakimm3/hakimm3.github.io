@@ -1,7 +1,7 @@
 export default [
     {
         title: "Full Stack Developer",
-        place: " PT. Era Kualitas Informasi (July 2022 - Now)",
+        place: " PT. Era Kualitas Informasi (July 2022 - Present)",
         description: "Responsible for developing web applications using various technologies including Laravel and JQuery. Participating in the development and testing of products on a regular basis. Responsible for managing and updating the application infrastructure.",
         link: "https://erasolution.co.id/"
     },

@@ -9,7 +9,10 @@ export default function Experience({id}){
             {ExperienceData.map((item) => {
                 return (
                     <div className="col-lg-6 my-2" key={item.title}>
-                        <Card title={item.title} sub_title={item.place} link={item.link} text={item.description} />
+                        <Card>
+                            <Card.Header link={item.link} title={item.title} sub_title={item.place} />
+                            <Card.Body text={item.description} />
+                        </Card>
                     </div>
                 )
             })}
