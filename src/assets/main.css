@@ -1,0 +1,88 @@
+@import url("https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap");
+body {
+  font-family: "Space Mono", monospace;
+  font-weight: 400;
+  font-style: normal;
+}
+.btn-dark {
+  border: 0.2px solid #7b63db;
+}
+
+.box-dark {
+  color: white;
+  border: 0.2px solid #7b63db;
+}
+
+.box-dark:hover {
+  background-color: #7b63db;
+  color: black;
+  border: 0.2px solid white;
+}
+
+.box-light {
+  color: black;
+  border: 2px solid black;
+}
+
+.box-light:hover {
+  background-color: black;
+  color: white;
+  border: 2px solid yellow;
+}
+
+.box-small {
+  height: 50px;
+  width: 50px;
+}
+
+.box-large {
+  height: 180px;
+  width: 180px;
+}
+
+.box-large .icon {
+  font-size: 80px;
+}
+
+.my-card {
+  border-radius: 10px;
+}
+
+.my-card-dark {
+  border: 2px solid #7b63db;
+}
+
+.my-card-light {
+  border: 2px solid black;
+}
+
+.my-card:hover {
+  background-color: #7b63db !important;
+  color: black !important;
+  border: 0.2px solid rgb(243, 245, 245) !important;
+}
+
+.large-image {
+  max-width: 30em;
+}
+
+.input {
+  /* height: 3rem; */
+
+  border: 2px solid #7b63db;
+  border-radius: 10px;
+  /* background-color: #212529; */
+
+  font-size: large;
+  padding: 5px 15px;
+}
+
+.input:focus {
+  border: 0.2px solid purple !important;
+}
+
+@media only screen and (max-width: 480px) {
+  .large-image {
+    max-width: 20em;
+  }
+}
