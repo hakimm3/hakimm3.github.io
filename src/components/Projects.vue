@@ -13,7 +13,7 @@
                         <p class="fw-bold"></p>
                     </div>
                     <p class="px-3">{{ project.description }}</p>
-                    <div class="mt-2 ms-2 d-flex gap-3">
+                    <div class="ms-2 d-flex column-gap-3 flex-wrap">
                         <p class="btn btn-dark" v-for="tool in project.tools"><i :class="tool.icon"></i> {{ tool.name }} </p>
                     </div>
                 </div>

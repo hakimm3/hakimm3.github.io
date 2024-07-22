@@ -1,9 +1,9 @@
 <template>
          <!-- get In Touch -->
     <section id="get-in-touch">
-        <div class="py-5 d-flex flex-column justify-content-center align-items-center">
+        <div class="container py-5 d-flex flex-column justify-content-center align-items-center">
             <p class="fs-2 text-center mb-5">Get In Touch</p>
-            <div id="form" class="col-12 col-lg-8">
+            <div id="form" class="col-12 col-lg-12">
                 <div class="d-flex flex-column gap-4">
                     <input type="text" placeholder="Name" class="form-control input">
                     <input type="email" placeholder="Email" class="form-control input">
