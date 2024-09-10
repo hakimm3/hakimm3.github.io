@@ -19,5 +19,3 @@ import Footer from "./components/Footer.vue";
   <GetInTouch />
   <Footer />
 </template>
-
-<style scoped></style>

@@ -6,7 +6,7 @@
         <div class="my-card my-card-dark">
           <div class="header d-flex flex-wrap justify-content-between px-3 pt-3">
             <p class="fs-4 fw-bold">Fullstack Developer at PT. Era Kualitas Informasi</p>
-            <p class="fw-bold">July 2019 - Present</p>
+            <p class="fw-bold">July 2022 - Present</p>
           </div>
           <p class="px-3">
             At PT. Era Kualitas Informasi, I served as a Web Developer responsible for creating and
