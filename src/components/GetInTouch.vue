@@ -99,7 +99,6 @@ const submit = () => {
                 <p class="mt-2 fs-1 fw-bold">Let's talk for something special</p>
                 <p class="my-3 fs-4">Looking forward to collaborating on exciting projects. Feel free to reach out for any inquiries or opportunities.</p>
             </Form>
-            <button @click="test">Test</button>
         </div>  
     </section>
 </template>

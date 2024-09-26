@@ -1,5 +1,5 @@
 <script setup>
-  import Resume from '../assets/Resume.pdf'
+  import Resume from '../assets/ResumePublic.pdf'
 
   import { ref, watch } from 'vue';
 
@@ -10,7 +10,6 @@
       showClass.value = value ? 'show' : '';
   });
 
-  console.log(showClass.value);
 
   const toggle = () => {
     isShow.value = !isShow.value;
