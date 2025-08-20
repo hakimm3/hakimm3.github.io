@@ -1,21 +1,15 @@
 <script setup>
 import Navbar from "./components/Navbar.vue";
-import Home from "./components/Home.vue";
-import About from "./components/About.vue";
-import Experience from "./components/Experience.vue";
-import Skils from "./components/Skils.vue";
-import Projects from "./components/Projects.vue";
-import GetInTouch from "./components/GetInTouch.vue";
 import Footer from "./components/Footer.vue";
+import { useRoute } from 'vue-router';
+import { computed } from 'vue';
+
+const route = useRoute();
+const showNavbar = computed(() => route.path === '/');
 </script>
 
 <template>
-  <Navbar />
-  <Home />
-  <About />
-  <Experience />
-  <Skils />
-  <Projects />
-  <GetInTouch />
+  <Navbar v-if="showNavbar" />
+  <router-view />
   <Footer />
 </template>
