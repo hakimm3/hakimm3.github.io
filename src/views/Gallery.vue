@@ -1,5 +1,5 @@
 <script setup>
-import { ref, onMounted } from 'vue'
+import { ref, onMounted, onUnmounted } from 'vue'
 import GalleryNavbar from '../components/GalleryNavbar.vue'
 import galleryImages from '../data/gallery.js'
 
@@ -19,6 +19,11 @@ const filterImages = () => {
   } else {
     filteredImages.value = images.value.filter(img => img.category === selectedCategory.value)
   }
+  
+  // Re-setup intersection observer after filtering
+  setTimeout(() => {
+    setupIntersectionObserver()
+  }, 100)
 }
 
 const openModal = (image) => {
@@ -71,8 +76,72 @@ const preventKeyboardShortcuts = (e) => {
   }
 }
 
+// Intersection Observer for smooth animations
+let currentObserver = null
+
+const setupIntersectionObserver = () => {
+  // Disconnect previous observer if it exists
+  if (currentObserver) {
+    currentObserver.disconnect()
+  }
+  
+  const observerOptions = {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+  }
+  
+  currentObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('animate-in')
+      }
+    })
+  }, observerOptions)
+  
+  // Reset animation classes and observe all gallery items
+  setTimeout(() => {
+    const galleryItems = document.querySelectorAll('.gallery-item')
+    galleryItems.forEach((item, index) => {
+      // Reset animation class
+      item.classList.remove('animate-in')
+      // Add a small delay for staggered animation
+      setTimeout(() => {
+        currentObserver.observe(item)
+      }, index * 50)
+    })
+  }, 50)
+}
+
 onMounted(() => {
   filterImages()
+  
+  // Add smooth scrolling behavior
+  document.documentElement.style.scrollBehavior = 'smooth'
+  
+  // Parallax effect for hero section
+  const handleScroll = () => {
+    const scrolled = window.pageYOffset
+    const hero = document.querySelector('.gallery-hero')
+    const parallaxSpeed = 0.5
+    
+    if (hero) {
+      hero.style.transform = `translateY(${scrolled * parallaxSpeed}px)`
+    }
+  }
+  
+  // Throttle scroll events for better performance
+  let ticking = false
+  const optimizedScroll = () => {
+    if (!ticking) {
+      requestAnimationFrame(() => {
+        handleScroll()
+        ticking = false
+      })
+      ticking = true
+    }
+  }
+  
+  window.addEventListener('scroll', optimizedScroll, { passive: true })
   
   // Disable right-click context menu on the entire gallery
   document.addEventListener('contextmenu', (e) => {
@@ -94,6 +163,23 @@ onMounted(() => {
       e.preventDefault()
     }
   })
+  
+  // Setup intersection observer for animations
+  setupIntersectionObserver()
+  
+  // Cleanup function
+  return () => {
+    window.removeEventListener('scroll', optimizedScroll)
+  }
+})
+
+onUnmounted(() => {
+  // Cleanup observers and event listeners
+  if (currentObserver) {
+    currentObserver.disconnect()
+  }
+  window.removeEventListener('scroll', () => {})
+  document.removeEventListener('keydown', preventKeyboardShortcuts)
 })
 </script>
 
@@ -205,6 +291,13 @@ onMounted(() => {
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+/* Smooth scrolling for the entire page */
+html {
+  scroll-behavior: smooth;
 }
 
 /* Disable image dragging and selection globally */
@@ -234,6 +327,10 @@ onMounted(() => {
   background-color: var(--bs-dark);
   color: white;
   text-align: center;
+  position: relative;
+  will-change: transform;
+  backface-visibility: hidden;
+  transform: translateZ(0);
 }
 
 .hero-title {
@@ -270,9 +367,10 @@ onMounted(() => {
   color: white;
   border-radius: 10px;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   font-weight: 500;
   font-family: "Space Mono", monospace;
+  will-change: transform;
 }
 
 .filter-btn:hover,
@@ -280,7 +378,8 @@ onMounted(() => {
   background-color: #7b63db;
   color: black;
   border-color: #7b63db;
-  transform: translateY(-2px);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(123, 99, 219, 0.3);
 }
 
 .gallery-grid-section {
@@ -301,9 +400,20 @@ onMounted(() => {
   overflow: hidden;
   background-color: var(--bs-dark);
   border: 2px solid #7b63db;
-  transition: all 0.4s ease;
   font-family: "Space Mono", monospace;
   height: fit-content;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1), 
+              transform 0.6s cubic-bezier(0.4, 0, 0.2, 1),
+              background-color 0.4s ease,
+              border-color 0.4s ease,
+              box-shadow 0.4s ease;
+}
+
+.gallery-item.animate-in {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .gallery-item:hover {
@@ -311,6 +421,10 @@ onMounted(() => {
   background-color: #7b63db;
   border-color: white;
   box-shadow: 0 10px 30px rgba(123, 99, 219, 0.3);
+}
+
+.gallery-item.animate-in:hover {
+  transform: translateY(-10px);
 }
 
 .image-wrapper {
@@ -409,6 +523,29 @@ onMounted(() => {
   justify-content: center;
   z-index: 9999;
   padding: 2rem;
+  opacity: 0;
+  animation: fadeIn 0.3s ease-out forwards;
+  backdrop-filter: blur(5px);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes modalSlideIn {
+  from {
+    opacity: 0;
+    transform: scale(0.8) translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
 }
 
 .modal-content {
@@ -422,6 +559,7 @@ onMounted(() => {
   box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
   display: flex;
   flex-direction: column;
+  animation: modalSlideIn 0.3s ease-out forwards;
 }
 
 .modal-content::before {
